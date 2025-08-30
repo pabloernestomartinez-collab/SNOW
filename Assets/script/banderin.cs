@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class player : MonoBehaviour
+public class banderin : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Debug.Log("hola mundo"); 
+        
     }
 
     // Update is called once per frame
