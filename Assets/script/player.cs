@@ -1,4 +1,3 @@
-using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class player : MonoBehaviour
@@ -19,8 +18,7 @@ public class player : MonoBehaviour
         {
             direccion = mg.delta; // actualiza la direccion segun management.cs
         }
-
         transform.localScale = new Vector3(direccion, 1.0f, 1.0f); // mueve el player segun la direccion
-
+        
     }
 }
