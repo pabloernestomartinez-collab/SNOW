@@ -1,16 +1,13 @@
 using UnityEngine;
-//using UnityEngine.Windows;
-
 
 public class management : MonoBehaviour
 {
-    public int x;
-    public int y;
-    public int delta;
-    public float speed;
-    public float time;
-    public int score;
-    public float direccion;
+    public float x;           //  pocision en Y
+    public float delta;       //variacion en el eje X
+    public float speed;     // velocidad
+    public float time;      // variable para controlas el valor tiempo
+    public int score;       // puntaje
+    public float direccion; //direccion que indica el teclado
 
 
 
@@ -18,64 +15,44 @@ public class management : MonoBehaviour
     void Start()
     {
         // define the initial values
-        speed = 0f;
+        speed = 0.0001f;
         delta = 1;
-        x= 10;  
-        y = 10;
+        x= 0;  
+        score = 0;
+        direccion = 0;  
+        time = 0;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        // reinicia el juego si se presiona la tecla R
-        if (Input.GetKey("r"))
-        {
-            y = 10;
-            score = 0;
-            speed = 0f;
-            delta = 1;
-            x = 10;
-        }
 
-        if (score > 1000) // limita el marcador a 100
-        {
-            score = 100;
-            y = 10;
-            score = 0;
-            speed = 1f;
-            delta = 1;
-            x = 10;
-            y = 10;
-        }
     
 
         // controla si hay cambios en la direccion del player 
         direccion = Input.GetAxisRaw("Horizontal");   // segun teclado
-        if (y >10)                                    // reinicia la posicion si baja mucho en el eje Y
-        {
-            y = -10;
-        }
 
-        if ((x < -10) || (direccion == -1)) // cambia la direccion si llega al limite de la mantalla o toque la tecla
+        if ((x < -6) || (direccion == -1)) // cambia la direccion si llega al limite de la mantalla o se toca la tecla
         {
             delta = 1;
         }
 
-        if ((x > 10) || (direccion == 1))   // cambia la direccion si llega al limite de la pantalla o toque la tecla
+        if ((x > 6) || (direccion == 1))   // cambia la direccion si llega al limite de la pantalla o se toca la tecla
         {
             delta = -1;
         }
 
         // determina la nueva pocision de la matrix y suma un punto al marcador
         time = time + Time.deltaTime;
-        if (time > speed)
+
+        if (time > 0.01f)
         {
-            y = y + 2;
             time = 0;
-            speed = (100 - score) * 0.01f;
-            x = x + delta;
+            speed = speed + 0.0001f;
             score = score + 1;
+            x = x + (delta * speed);
+
         }
     }
     }
