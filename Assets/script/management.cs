@@ -68,7 +68,8 @@ public class management : MonoBehaviour
         if (time > 0.01f)
         {
             time = 0;
-            speed = speed + 0.00025f;
+            speed = speed + 0.0002f;
+            if (speed > 0.05f) speed = 0.05f; // limita la velocidad maxima   
             score = score + 0.1f;
             x = x + (delta * speed);
             scoreText.text = "Score: " +  score.ToString(); // actualiza el texto del puntaje
