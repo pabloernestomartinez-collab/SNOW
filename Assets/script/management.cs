@@ -48,6 +48,11 @@ public class management : MonoBehaviour
             }
         }
 
+        
+
+
+
+
 
         // controla si hay cambios en la direccion del player 
         direccion = Input.GetAxisRaw("Horizontal");   // segun teclado
@@ -68,9 +73,9 @@ public class management : MonoBehaviour
         if (time > 0.01f)
         {
             time = 0;
-            speed = speed + 0.0002f;
+            speed = speed + 0.00015f;
             if (speed > 0.05f) speed = 0.05f; // limita la velocidad maxima   
-            score = score + 0.1f;
+            score = score + 0.015f;
             x = x + (delta * speed);
             scoreText.text = "Score: " +  score.ToString(); // actualiza el texto del puntaje
         }
